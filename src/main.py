@@ -4,19 +4,23 @@ from fastapi.staticfiles import StaticFiles
 from starlette.responses import RedirectResponse, Response
 from typing import Annotated
 import uvicorn
+from pathlib import Path
 
 app = FastAPI()
 
-# Set up templates and static files
-templates = Jinja2Templates(directory="../templates")  # Change this path accordingly
-app.mount("/static", StaticFiles(directory="../templates/static"), name="static")
+# Get absolute path to the project root folder (2 levels up from main.py)
+BASE_DIR = Path(__file__).parent.parent.resolve()
 
-# Routes
+templates_dir = BASE_DIR / "templates"
+static_dir = templates_dir / "static"
+
+# Use absolute paths for templates and static
+templates = Jinja2Templates(directory=str(templates_dir))
+app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+
 @app.get("/")
 def home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
-
-# Run the app
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("src.main:app", host="0.0.0.0", port=8000, reload=True)
