@@ -32,25 +32,35 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Samuel Olubukun</h1>
-                <p class="hero-subtitle">Full Stack Web Developer, Data Scientist & AI/ML Engineer</p>
-                <p class="hero-description">
-                    I create modern web applications and data-driven solutions, specializing in full-stack development, 
-                    data science, and AI/ML. My work focuses on building scalable systems that tackle real-world 
-                    challenges with innovative, impactful results.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            <div class="hero-content-wrapper">
+                <div class="hero-image">
+                    <div class="profile-image-container">
+                        <div class="profile-image-border">
+                            <img src="assets/SamuelOlubukun.jpg" alt="Samuel Olubukun" class="profile-image">
+                        </div>
+                        <div class="profile-glow"></div>
+                    </div>
                 </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/samuel-olubukun" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/samolubukun" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
+                <div class="hero-content">
+                    <h1 class="hero-title">Samuel Olubukun</h1>
+                    <p class="hero-subtitle">Full Stack Web Developer, Data Scientist & AI/ML Engineer</p>
+                    <p class="hero-description">
+                        I create modern web applications and data-driven solutions, specializing in full-stack development, 
+                        data science, and AI/ML. My work focuses on building scalable systems that tackle real-world 
+                        challenges with innovative, impactful results.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/samuel-olubukun" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/samolubukun" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -284,6 +294,17 @@
                     link.classList.add('active');
                 }
             });
+        });
+
+        // Profile image animation on scroll
+        window.addEventListener('scroll', () => {
+            const profileContainer = document.querySelector('.profile-image-container');
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            if (profileContainer) {
+                profileContainer.style.transform = `translateY(${rate}px)`;
+            }
         });
     </script>
 </body>
