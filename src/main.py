@@ -17,6 +17,7 @@ static_dir = templates_dir / "static"
 # Use absolute paths for templates and static
 templates = Jinja2Templates(directory=str(templates_dir))
 app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+app.mount("/assets", StaticFiles(directory=str(templates_dir / "assets")), name="assets")
 
 @app.get("/")
 def home(request: Request):
